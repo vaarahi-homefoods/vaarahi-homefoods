@@ -199,5 +199,22 @@ footer {
   font-weight: bold;
   color: #7a2d2d;
 }
+/* ======================
+   HEADER TEXT + MOBILE
+====================== */
+.header-inner h1 {
+  color: #7a2d2d;
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    width: 70px;
+  }
+}
 
 
