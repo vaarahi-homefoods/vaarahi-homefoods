@@ -216,5 +216,33 @@ footer {
     width: 70px;
   }
 }
+/* ======================
+   BANNER SLIDER
+====================== */
+.slider {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.free-shipping {
+  background: #ffeb3b;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+}
 
 
