@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fffaf4;
+  color: #333;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #fff;
+}
+
+.logo {
+  height: 70px;
+}
+
+nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #8b0000;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: #f8efe6;
+}
+
+.btn {
+  background: #8b0000;
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.menu-image img {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.whatsapp {
+  background: #25D366;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.center {
+  text-align: center;
+  margin: 30px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #eee;
+}
