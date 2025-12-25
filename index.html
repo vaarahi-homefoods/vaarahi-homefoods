@@ -2,26 +2,40 @@
 <html>
 <head>
   <title>VAARAHI HomeFoods</title>
-  <style>
-    body { font-family: Arial; text-align: center; background: #fff8f0; }
-    h1 { color: #8b0000; }
-    .product { border: 1px solid #ddd; margin: 15px; padding: 15px; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Header -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>VAARAHI HomeFoods</h1>
+      <p>Traditional Homemade Goodness Delivered</p>
+      <a href="products.html" class="btn-main">See Products</a>
+    </div>
+  </header>
 
-<h1>VAARAHI HomeFoods</h1>
-<p>Traditional Homemade Foods</p>
+  <!-- Featured Products -->
+  <section>
+    <h2>Our Popular Foods</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/pickle.jpg" alt="Homemade Pickle">
+        <h3>Homemade Pickle</h3>
+        <p>Authentic flavour, no preservatives</p>
+      </div>
 
-<div class="product">
-  <h3>Homemade Pickle</h3>
-  <p>Traditional taste, no preservatives</p>
-</div>
+      <div class="product-card">
+        <img src="images/riceflour.jpg" alt="Rice Flour">
+        <h3>Rice Flour</h3>
+        <p>Stone-ground for best taste</p>
+      </div>
+    </div>
+  </section>
 
-<div class="product">
-  <h3>Rice Flour</h3>
-  <p>Stone-ground, pure & fresh</p>
-</div>
+  <footer>
+    <p>Contact us on WhatsApp</p>
+    <a href="https://wa.me/your-number" class="btn-whatsapp">Order Now</a>
+  </footer>
 
 </body>
 </html>
