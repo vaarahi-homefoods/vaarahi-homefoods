@@ -33,6 +33,32 @@ nav a {
 nav a:hover {
   color: #b04a4a;
 }
+/* ======================
+   LOGO HEADER
+====================== */
+.header {
+  background: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.tagline {
+  color: #555;
+  font-size: 16px;
+}
 
 /* ======================
    HERO SECTION
