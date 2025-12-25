@@ -99,3 +99,79 @@ footer {
   padding: 20px;
   margin-top: 50px;
 }
+
+/* ======================
+   CATEGORY GRID
+====================== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.category-card {
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+}
+
+.category-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* ======================
+   PRODUCT GRID
+====================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.product-card select {
+  padding: 8px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* ======================
+   CART PAGE
+====================== */
+#cartItems p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#total {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #7a2d2d;
+}
+
+
