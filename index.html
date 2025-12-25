@@ -6,10 +6,11 @@
 </head>
 
 <body>
+
+<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
     <img src="images/logo.png" alt="Vaarahi HomeFoods Logo" class="logo">
-
     <div>
       <h1>Vaarahi HomeFoods</h1>
       <p class="tagline">Traditional Homemade Foods</p>
@@ -17,27 +18,19 @@
   </div>
 </header>
 
-<header class="header">
-  <section class="slider">
-  <img src="images/banner1.jpg" class="slide active">
-  <img src="images/banner2.jpg" class="slide">
-</section>
-
+<!-- FREE SHIPPING -->
 <div class="free-shipping">
   🚚 FREE SHIPPING ON ALL ORDERS
 </div>
 
-  <div class="header-inner">
-    <img src="images/logo.png" alt="VAARAHI HomeFoods Logo" class="logo">
-    <div>
-      <h1>VAARAHI HomeFoods</h1>
-      <p class="tagline">Traditional Homemade Foods</p>
-    </div>
-  </div>
-</header>
+<!-- BANNER SLIDER -->
+<section class="slider">
+  <img src="images/banner1.jpg" class="slide active" alt="Banner 1">
+  <img src="images/banner2.jpg" class="slide" alt="Banner 2">
+</section>
 
+<!-- CATEGORIES -->
 <section class="categories">
-
   <div class="category-grid">
 
     <a href="sweets.html" class="category-card">
@@ -61,23 +54,22 @@
     </a>
 
   </div>
-
 </section>
 
+<!-- CART -->
 <a href="cart.html" class="cart-link">🛒 View Cart</a>
+
+<!-- SLIDER SCRIPT -->
+<script>
+  let slides = document.querySelectorAll(".slide");
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3000);
+</script>
 
 </body>
 </html>
-
-
-<script>
-let slides = document.querySelectorAll(".slide");
-let index = 0;
-
-setInterval(() => {
-  slides[index].classList.remove("active");
-  index = (index + 1) % slides.length;
-  slides[index].classList.add("active");
-}, 3000);
-</script>
-
