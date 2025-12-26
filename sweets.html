@@ -1,48 +1,134 @@
-// ---------- CART STORAGE ----------
-function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sweets | Vaarahi HomeFoods</title>
+  <link rel="stylesheet" href="styles.css">
 
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+  <!-- IMPORTANT: defer is REQUIRED -->
+  <script src="cart.js" defer></script>
+</head>
 
-// ---------- ADD TO CART ----------
-function addToCart(name, selectId) {
-  const select = document.getElementById(selectId);
-  const [qty, price] = select.value.split("|");
+<body>
 
-  let cart = getCart();
+<header class="header">
+  <div class="header-inner">
 
-  const existing = cart.find(
-    item => item.name === name && item.qty === qty
-  );
+    <!-- LOGO = HOME -->
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.png" alt="Vaarahi HomeFoods Logo" class="logo">
+    </a>
 
-  if (existing) {
-    existing.count += 1;
-  } else {
-    cart.push({
-      name,
-      qty,
-      price: Number(price),
-      count: 1
-    });
-  }
+    <!-- BRAND -->
+    <div class="brand-text">
+      <h1>Vaarahi HomeFoods</h1>
+      <p class="tagline">Traditional Homemade Foods</p>
+    </div>
 
-  saveCart(cart);
-  updateCartCount();
+    <!-- RIGHT ACTIONS -->
+    <div class="header-actions">
 
-  alert(`${name} added to cart`);
-}
+      <!-- CONTACT US -->
+      <a 
+        href="https://wa.me/919494359748" 
+        target="_blank"
+        class="contact-btn">
+        💬 Contact Us
+      </a>
 
-// ---------- CART COUNT ----------
-function updateCartCount() {
-  const cart = getCart();
-  const count = cart.reduce((sum, item) => sum + item.count, 0);
+      <!-- CART -->
+      <a href="cart.html" class="cart-top">
+        🛒 Cart (<span id="cartCount">0</span>)
+      </a>
 
-  const el = document.getElementById("cartCount");
-  if (el) el.textContent = count;
-}
+    </div>
+  </div>
+</header>
 
-// ---------- LOAD ON PAGE ----------
-document.addEventListener("DOMContentLoaded", updateCartCount);
+<section class="categories">
+  <div class="product-grid">
+
+    <div class="product-card">
+      <img src="images/sweets/dry-fruit-ladoo.jpg" alt="Dry Fruit Ladoo">
+      <h3>Dry Fruit Ladoo</h3>
+      <select id="q1">
+        <option value="200g|300">200g – ₹300</option>
+        <option value="500g|700">500g – ₹700</option>
+        <option value="1kg|1350">1kg – ₹1350</option>
+      </select>
+      <button onclick="addToCart('Dry Fruit Ladoo','q1')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sweets/karjikayalu.jpg" alt="Karjikayalu">
+      <h3>Karjikayalu (Jaggery)</h3>
+      <select id="q2">
+        <option value="200g|280">200g – ₹280</option>
+      </select>
+      <button onclick="addToCart('Karjikayalu','q2')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sweets/arisalu.jpg" alt="Arisalu">
+      <h3>Arisalu (10 Pieces)</h3>
+      <select id="q3">
+        <option value="10pcs|220">10 Pieces – ₹220</option>
+      </select>
+      <button onclick="addToCart('Arisalu','q3')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sweets/boondi-ladoo.jpg" alt="Boondi Ladoo">
+      <h3>Boondi Ladoo</h3>
+      <select id="q4">
+        <option value="200g|200">200g – ₹200</option>
+      </select>
+      <button onclick="addToCart('Boondi Ladoo','q4')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sweets/nuvvula-undalu.jpg" alt="Nuvvula Undalu">
+      <h3>Nuvvula Undalu</h3>
+      <select id="q5">
+        <option value="200g|300">200g – ₹300</option>
+      </select>
+      <button onclick="addToCart('Nuvvula Undalu','q5')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sweets/sunnundalu.jpg" alt="Sunnundalu">
+      <h3>Sunnundalu</h3>
+      <select id="q6">
+        <option value="200g|300">200g – ₹300</option>
+      </select>
+      <button onclick="addToCart('Sunnundalu','q6')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sweets/ravva-ladoo.jpg" alt="Ravva Ladoo">
+      <h3>Ravva Ladoo</h3>
+      <select id="q7">
+        <option value="200g|180">200g – ₹180</option>
+      </select>
+      <button onclick="addToCart('Ravva Ladoo','q7')">
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
