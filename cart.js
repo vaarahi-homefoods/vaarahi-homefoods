@@ -1,106 +1,114 @@
 /* ======================
    CART STORAGE
 ====================== */
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 /* ======================
    ADD TO CART
 ====================== */
-function addToCart(productName, selectId) {
+
+function addToCart(name, selectId) {
   const select = document.getElementById(selectId);
   const [qty, price] = select.value.split("|");
 
-  const numericPrice = Number(price);
+  let cart = getCart();
 
-  // Check if item already exists
-  const existing = cart.find(
-    item => item.name === productName && item.qty === qty
-  );
+  const existing = cart.find(item => item.name === name && item.qty === qty);
 
   if (existing) {
     existing.count += 1;
   } else {
     cart.push({
-      name: productName,
+      name: name,
       qty: qty,
-      price: numericPrice,
+      price: Number(price),
       count: 1
     });
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+  saveCart(cart);
   updateCartCount();
-  alert("Added to cart");
+  alert(`${name} added to cart`);
 }
 
 /* ======================
-   UPDATE CART COUNT
+   CART COUNT (HEADER)
 ====================== */
+
 function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const total = cart.reduce((sum, item) => sum + item.count, 0);
-
+  const cart = getCart();
+  const count = cart.reduce((sum, item) => sum + item.count, 0);
   const el = document.getElementById("cartCount");
-  if (el) el.innerText = total;
+  if (el) el.textContent = count;
 }
 
 /* ======================
-   LOAD CART PAGE
+   LOAD CART COUNT ON PAGE LOAD
 ====================== */
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+/* ======================
+   CART PAGE RENDER
+====================== */
+
 function loadCart() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let html = "";
+  const cart = getCart();
+  const container = document.getElementById("cartItems");
+  const totalEl = document.getElementById("total");
+
+  if (!container) return;
+
+  container.innerHTML = "";
   let total = 0;
 
   cart.forEach((item, index) => {
     const itemTotal = item.price * item.count;
     total += itemTotal;
 
-    html += `
+    container.innerHTML += `
       <div class="cart-item">
-        <div>
-          <strong>${item.name}</strong><br>
-          <small>${item.qty}</small>
-        </div>
-
-        <div class="qty-controls">
-          <button onclick="changeQty(${index}, -1)">−</button>
-          <span>${item.count}</span>
-          <button onclick="changeQty(${index}, 1)">+</button>
-        </div>
-
-        <div>₹${itemTotal}</div>
-
-        <button class="remove-btn" onclick="removeItem(${index})">✕</button>
+        <strong>${item.name}</strong> (${item.qty})<br>
+        ₹${item.price} × ${item.count} = ₹${itemTotal}
+        <br>
+        <button onclick="changeQty(${index}, -1)">−</button>
+        <button onclick="changeQty(${index}, 1)">+</button>
+        <button onclick="removeItem(${index})">❌</button>
       </div>
     `;
   });
 
-  document.getElementById("cartItems").innerHTML = html;
-  document.getElementById("total").innerText = "Total: ₹" + total;
+  totalEl.textContent = "Total: ₹" + total;
 }
 
 /* ======================
-   CHANGE QUANTITY
+   CART ACTIONS
 ====================== */
+
 function changeQty(index, delta) {
+  const cart = getCart();
   cart[index].count += delta;
 
   if (cart[index].count <= 0) {
     cart.splice(index, 1);
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+  saveCart(cart);
   loadCart();
   updateCartCount();
 }
 
-/* ======================
-   REMOVE ITEM
-====================== */
 function removeItem(index) {
+  const cart = getCart();
   cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
+  saveCart(cart);
   loadCart();
   updateCartCount();
 }
@@ -108,22 +116,26 @@ function removeItem(index) {
 /* ======================
    WHATSAPP CHECKOUT
 ====================== */
+
 function checkout() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let msg = "Hello VAARAHI HomeFoods,%0A%0AOrder Details:%0A";
+  const cart = getCart();
+  if (cart.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  let message = "🛒 *Vaarahi HomeFoods Order*%0A%0A";
   let total = 0;
 
   cart.forEach(item => {
     const itemTotal = item.price * item.count;
     total += itemTotal;
-    msg += `• ${item.name} (${item.qty}) x ${item.count} = ₹${itemTotal}%0A`;
+    message += `• ${item.name} (${item.qty}) × ${item.count} = ₹${itemTotal}%0A`;
   });
 
-  msg += `%0A*Total: ₹${total}*`;
+  message += `%0A*Total: ₹${total}*`;
 
-  window.location.href =
-    "https://wa.me/919494359748?text=" + msg;
+  const phone = "919494359748";
+  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 }
 
-/* INIT */
-updateCartCount();
