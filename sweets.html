@@ -3,30 +3,90 @@
 <head>
   <title>Sweets | Vaarahi HomeFoods</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js"></script>
+  <script src="cart.js"></script>
 </head>
 <body>
 
-<h1 class="center">Sweets</h1>
+<header class="header">
+  <div class="header-inner">
+    <img src="images/logo.png" class="logo">
+    <div>
+      <h1>Sweets</h1>
+      <p class="tagline">Traditional Andhra Sweets</p>
+    </div>
+  </div>
+</header>
 
+<section class="categories">
 <div class="product-grid">
 
-  <div class="product-card">
-   <img src="images/sweets/karjikayalu.jpg" alt="Karjikayalu">
-    <h3>Karjikayalu</h3>
+<div class="product-card">
+<img src="images/sweets/dry-fruit-ladoo.jpg">
+<h3>Dry Fruit Ladoo</h3>
+<select id="q1">
+<option value="200g|300">200g – ₹300</option>
+<option value="500g|700">500g – ₹700</option>
+<option value="1kg|1350">1kg – ₹1350</option>
+</select>
+<button onclick="addToCart('Dry Fruit Ladoo','q1')">Add to Cart</button>
+</div>
 
-    <select id="qty-1">
-      <option value="200g|280">200g – ₹280</option>
-      <option value="500g|650">500g – ₹650</option>
-      <option value="1kg|1200">1kg – ₹1200</option>
-    </select>
+<div class="product-card">
+<img src="images/sweets/karjikayalu.jpg">
+<h3>Karjikayalu (Jaggery)</h3>
+<select id="q2">
+<option value="200g|280">200g – ₹280</option>
+</select>
+<button onclick="addToCart('Karjikayalu','q2')">Add to Cart</button>
+</div>
 
-    <button onclick="addToCart('Karjikayalu', 'qty-1')">
-      Add to Cart
-    </button>
-  </div>
+<div class="product-card">
+<img src="images/sweets/arisalu.jpg">
+<h3>Arisalu (10 Pieces)</h3>
+<select id="q3">
+<option value="10pcs|220">10 Pieces – ₹220</option>
+</select>
+<button onclick="addToCart('Arisalu','q3')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="images/sweets/boondi-ladoo.jpg">
+<h3>Boondi Ladoo</h3>
+<select id="q4">
+<option value="200g|200">200g – ₹200</option>
+</select>
+<button onclick="addToCart('Boondi Ladoo','q4')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="images/sweets/nuvvula-undalu.jpg">
+<h3>Nuvvula Undalu</h3>
+<select id="q5">
+<option value="200g|300">200g – ₹300</option>
+</select>
+<button onclick="addToCart('Nuvvula Undalu','q5')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="images/sweets/sunnundalu.jpg">
+<h3>Sunnundalu</h3>
+<select id="q6">
+<option value="200g|300">200g – ₹300</option>
+</select>
+<button onclick="addToCart('Sunnundalu','q6')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="images/sweets/ravva-ladoo.jpg">
+<h3>Ravva Ladoo</h3>
+<select id="q7">
+<option value="200g|180">200g – ₹180</option>
+</select>
+<button onclick="addToCart('Ravva Ladoo','q7')">Add to Cart</button>
+</div>
 
 </div>
+</section>
 
 <a href="cart.html" class="cart-link">🛒 View Cart</a>
 
