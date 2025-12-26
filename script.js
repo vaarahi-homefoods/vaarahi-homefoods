@@ -41,3 +41,10 @@ function checkout() {
   window.location.href =
     "https://wa.me/919494359748?text=" + window.whatsappMessage;
 }
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("cartCount").innerText = cart.length;
+}
+
+updateCartCount();
+
