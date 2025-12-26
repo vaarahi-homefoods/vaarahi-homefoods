@@ -264,5 +264,26 @@ footer {
   margin: 40px auto;
   padding: 0 20px;
 }
+/* ======================
+   FORCE CATEGORY CARD FIX
+====================== */
+.category-card img {
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 auto 15px !important;
+}
+
+.category-card {
+  text-align: center;
+}
+
+.categories {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
 
 
