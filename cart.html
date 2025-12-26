@@ -6,7 +6,7 @@
   <script src="cart.js" defer></script>
 </head>
 
-<body>
+<body onload="loadCart()">
 
 <header class="header">
   <div class="header-inner">
@@ -28,19 +28,17 @@
 </header>
 
 <section class="categories">
-  <h2>Your Cart</h2>
 
-  <div id="cartItems"></div>
+<h2>Your Cart</h2>
 
-  <h3 id="total"></h3>
+<div id="cartItems"></div>
 
-  <a 
-    href="https://wa.me/919494359748" 
-    target="_blank"
-    class="contact-btn"
-    style="display:inline-block;margin-top:20px;">
-    Checkout on WhatsApp
-  </a>
+<h3 id="total"></h3>
+
+<button class="checkout-btn" onclick="checkout()">
+  Checkout on WhatsApp
+</button>
+
 </section>
 
 </body>
