@@ -235,3 +235,53 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
+/* ======================
+   HEADER ACTION BUTTONS
+====================== */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* CONTACT BUTTON */
+.contact-btn {
+  background: #25d366;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.contact-btn:hover {
+  background: #1ebe5d;
+}
+
+/* CART BUTTON */
+.cart-top {
+  background: #7a2d2d;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cart-top:hover {
+  background: #9b3d3d;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-actions {
+    justify-content: center;
+  }
+}
