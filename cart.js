@@ -1,4 +1,3 @@
-// ---------- CART STORAGE ----------
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -7,59 +6,36 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// ---------- ADD TO CART ----------
 function addToCart(name, selectId) {
   const select = document.getElementById(selectId);
-  if (!select) {
-    alert("Select not found ❌");
-    return;
-  }
+  if (!select) return alert("Select not found");
 
-  const value = select.value;
-  if (!value.includes("|")) {
-    alert("Invalid price format ❌");
-    return;
-  }
+  const parts = select.value.split("|");
+  if (parts.length !== 2) return alert("Invalid value");
 
-  const [qty, priceStr] = value.split("|");
-  const price = Number(priceStr);
-
-  if (isNaN(price)) {
-    alert("Price error ❌");
-    return;
-  }
+  const qty = parts[0];
+  const price = Number(parts[1]);
+  if (isNaN(price)) return alert("Price error");
 
   let cart = getCart();
 
-  const existing = cart.find(
-    item => item.name === name && item.qty === qty
-  );
-
-  if (existing) {
-    existing.count += 1;
+  const item = cart.find(i => i.name === name && i.qty === qty);
+  if (item) {
+    item.count += 1;
   } else {
-    cart.push({
-      name,
-      qty,
-      price,
-      count: 1
-    });
+    cart.push({ name, qty, price, count: 1 });
   }
 
   saveCart(cart);
   updateCartCount();
-
-  alert(`${name} (${qty}) added to cart ✅`);
+  alert(`${name} added to cart`);
 }
 
-// ---------- CART COUNT ----------
 function updateCartCount() {
   const cart = getCart();
-  const count = cart.reduce((sum, item) => sum + item.count, 0);
-
+  const count = cart.reduce((s, i) => s + i.count, 0);
   const el = document.getElementById("cartCount");
   if (el) el.textContent = count;
 }
 
-// ---------- LOAD ON PAGE ----------
 document.addEventListener("DOMContentLoaded", updateCartCount);
