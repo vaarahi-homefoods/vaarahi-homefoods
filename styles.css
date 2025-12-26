@@ -27,20 +27,50 @@ body {
   padding: 15px 20px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
 }
 
 .logo {
   width: 70px;
 }
 
-.header h1 {
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-text {
+  text-align: center;
+  flex: 1;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 26px;
   color: #7a2d2d;
 }
 
 .tagline {
   font-size: 14px;
   color: #555;
+}
+
+/* ======================
+   CART (TOP)
+====================== */
+.cart-top {
+  background: #7a2d2d;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cart-top:hover {
+  background: #9b3d3d;
 }
 
 /* ======================
@@ -117,83 +147,19 @@ body {
 }
 
 /* ======================
-   CART LINK
-====================== */
-.cart-link {
-  display: block;
-  text-align: center;
-  margin: 40px;
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #7a2d2d;
-}
-
-/* ======================
    MOBILE
 ====================== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .header-inner {
     flex-direction: column;
-    text-align: center;
+    gap: 10px;
   }
 
   .slider {
     height: 260px;
-  }
-}
-/* ======================
-   HEADER LAYOUT FIX
-====================== */
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: auto;
-  gap: 20px;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.brand-text h1 {
-  margin: 0;
-  color: #7a2d2d;
-  font-size: 26px;
-}
-
-.brand-text .tagline {
-  font-size: 14px;
-  color: #666;
-}
-
-.cart-top {
-  background: #7a2d2d;
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.cart-top:hover {
-  background: #9b3d3d;
-}
-
-/* MOBILE FIX */
-@media (max-width: 768px) {
-  .header-inner {
-    flex-direction: column;
-    text-align: center;
   }
 
   .cart-top {
     margin-top: 10px;
   }
 }
-
