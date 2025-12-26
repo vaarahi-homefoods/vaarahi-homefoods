@@ -142,3 +142,58 @@ body {
     height: 260px;
   }
 }
+/* ======================
+   HEADER LAYOUT FIX
+====================== */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: auto;
+  gap: 20px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-text h1 {
+  margin: 0;
+  color: #7a2d2d;
+  font-size: 26px;
+}
+
+.brand-text .tagline {
+  font-size: 14px;
+  color: #666;
+}
+
+.cart-top {
+  background: #7a2d2d;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cart-top:hover {
+  background: #9b3d3d;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-top {
+    margin-top: 10px;
+  }
+}
+
