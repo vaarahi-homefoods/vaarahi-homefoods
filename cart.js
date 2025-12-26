@@ -1,76 +1,106 @@
-/* =========================
-   CART LOGIC (LOCAL STORAGE)
-========================= */
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ADD ITEM */
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 function addToCart(name, selectId) {
   const select = document.getElementById(selectId);
-  if (!select) {
-    alert("Error adding item");
-    return;
+  const [qty, price] = select.value.split("|");
+
+  const existing = cart.find(
+    item => item.name === name && item.qty === qty
+  );
+
+  if (existing) {
+    existing.count += 1;
+  } else {
+    cart.push({
+      name,
+      qty,
+      price: Number(price),
+      count: 1
+    });
   }
 
-  const [quantity, price] = select.value.split("|");
-
-  cart.push({
-    name: name,
-    quantity: quantity,
-    price: parseInt(price)
-  });
-
-  localStorage.setItem("cart", JSON.stringify(cart));
+  saveCart();
   updateCartCount();
-
-  alert(`${name} (${quantity}) added to cart`);
+  alert("Added to cart!");
 }
 
-/* UPDATE CART COUNT */
 function updateCartCount() {
-  const countEl = document.getElementById("cartCount");
-  if (countEl) {
-    countEl.innerText = cart.length;
-  }
+  const totalCount = cart.reduce((sum, i) => sum + i.count, 0);
+  const el = document.getElementById("cartCount");
+  if (el) el.innerText = totalCount;
 }
 
-/* LOAD CART PAGE */
+/* ---------- CART PAGE ---------- */
+
 function loadCart() {
-  const cartItems = document.getElementById("cartItems");
-  const totalEl = document.getElementById("total");
-
-  if (!cartItems) return;
-
-  cartItems.innerHTML = "";
+  let html = "";
   let total = 0;
-  let message = "Hello VAARAHI HomeFoods,%0A%0A🛒 Order Details:%0A";
 
   cart.forEach((item, index) => {
-    cartItems.innerHTML += `
-      <p>
-        ${index + 1}. ${item.name} (${item.quantity}) – ₹${item.price}
-      </p>
+    const itemTotal = item.price * item.count;
+    total += itemTotal;
+
+    html += `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong><br>
+          <small>${item.qty}</small>
+        </div>
+
+        <div class="qty-controls">
+          <button onclick="changeQty(${index}, -1)">−</button>
+          <span>${item.count}</span>
+          <button onclick="changeQty(${index}, 1)">+</button>
+        </div>
+
+        <div>₹${itemTotal}</div>
+
+        <button class="remove-btn" onclick="removeItem(${index})">✖</button>
+      </div>
     `;
-    total += item.price;
-    message += `${index + 1}. ${item.name} (${item.quantity}) - ₹${item.price}%0A`;
   });
 
-  totalEl.innerHTML = `Total: ₹${total}`;
-  message += `%0A💰 Total Amount: ₹${total}`;
-
-  window.whatsappMessage = message;
+  document.getElementById("cartItems").innerHTML = html || "<p>Cart is empty</p>";
+  document.getElementById("total").innerText = "Total: ₹" + total;
 }
 
-/* CHECKOUT TO WHATSAPP */
-function checkout() {
-  if (cart.length === 0) {
-    alert("Your cart is empty");
-    return;
+function changeQty(index, delta) {
+  cart[index].count += delta;
+
+  if (cart[index].count <= 0) {
+    cart.splice(index, 1);
   }
 
-  window.location.href =
-    "https://wa.me/919494359748?text=" + window.whatsappMessage;
+  saveCart();
+  loadCart();
+  updateCartCount();
 }
 
-/* INIT COUNT ON PAGE LOAD */
-document.addEventListener("DOMContentLoaded", updateCartCount);
+function removeItem(index) {
+  cart.splice(index, 1);
+  saveCart();
+  loadCart();
+  updateCartCount();
+}
+
+function checkout() {
+  let msg = "Hello Vaarahi HomeFoods,%0A%0AOrder Details:%0A";
+  let total = 0;
+
+  cart.forEach(item => {
+    const itemTotal = item.price * item.count;
+    total += itemTotal;
+    msg += `• ${item.name} (${item.qty}) x ${item.count} = ₹${itemTotal}%0A`;
+  });
+
+  msg += `%0ATotal: ₹${total}`;
+
+  window.location.href =
+    "https://wa.me/919494359748?text=" + msg;
+}
+
+updateCartCount();
