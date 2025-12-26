@@ -10,8 +10,6 @@ function saveCart(cart) {
 // ---------- ADD TO CART ----------
 function addToCart(name, selectId) {
   const select = document.getElementById(selectId);
-  if (!select) return;
-
   const [qty, price] = select.value.split("|");
 
   let cart = getCart();
@@ -21,7 +19,7 @@ function addToCart(name, selectId) {
   );
 
   if (existing) {
-    existing.count += 1;
+    existing.count++;
   } else {
     cart.push({
       name,
@@ -33,50 +31,93 @@ function addToCart(name, selectId) {
 
   saveCart(cart);
   updateCartCount();
+  alert(`${name} added to cart`);
 }
 
 // ---------- CART COUNT ----------
 function updateCartCount() {
   const cart = getCart();
   const count = cart.reduce((sum, item) => sum + item.count, 0);
-
   const el = document.getElementById("cartCount");
   if (el) el.textContent = count;
 }
 
-// ---------- RENDER CART PAGE ----------
-function renderCart() {
+// ---------- LOAD CART PAGE ----------
+function loadCart() {
   const cart = getCart();
   const container = document.getElementById("cartItems");
-  const totalEl = document.getElementById("total");
-
-  if (!container) return;
-
-  if (cart.length === 0) {
-    container.innerHTML = "<p>Your cart is empty.</p>";
-    if (totalEl) totalEl.textContent = "";
-    return;
-  }
-
   let total = 0;
+  let html = "";
 
-  container.innerHTML = cart.map((item, index) => {
+  cart.forEach((item, index) => {
     const itemTotal = item.price * item.count;
     total += itemTotal;
 
-    return `
+    html += `
       <div class="cart-item">
         <strong>${item.name}</strong><br>
         ${item.qty} × ₹${item.price} = ₹${itemTotal}
+
+        <div class="qty-controls">
+          <button onclick="changeQty(${index}, -1)">−</button>
+          <span>${item.count}</span>
+          <button onclick="changeQty(${index}, 1)">+</button>
+        </div>
+
+        <button class="remove-btn" onclick="removeItem(${index})">✖</button>
       </div>
     `;
-  }).join("");
+  });
 
-  if (totalEl) totalEl.textContent = `Total: ₹${total}`;
+  container.innerHTML = html || "<p>Your cart is empty</p>";
+  document.getElementById("total").innerText = "Total: ₹" + total;
+
+  updateCartCount();
 }
 
-// ---------- LOAD ON EVERY PAGE ----------
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartCount();
-  renderCart();
-});
+// ---------- CHANGE QUANTITY ----------
+function changeQty(index, change) {
+  let cart = getCart();
+  cart[index].count += change;
+
+  if (cart[index].count <= 0) {
+    cart.splice(index, 1);
+  }
+
+  saveCart(cart);
+  loadCart();
+}
+
+// ---------- REMOVE ITEM ----------
+function removeItem(index) {
+  let cart = getCart();
+  cart.splice(index, 1);
+  saveCart(cart);
+  loadCart();
+}
+
+// ---------- WHATSAPP CHECKOUT ----------
+function checkout() {
+  const cart = getCart();
+  if (cart.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  let message = "Hello Vaarahi HomeFoods,%0A%0AOrder Details:%0A";
+  let total = 0;
+
+  cart.forEach(item => {
+    const itemTotal = item.price * item.count;
+    total += itemTotal;
+    message += `- ${item.name} (${item.qty}) x ${item.count} = ₹${itemTotal}%0A`;
+  });
+
+  message += `%0ATotal: ₹${total}`;
+
+  window.location.href =
+    "https://wa.me/919494359748?text=" + message;
+}
+
+// ---------- LOAD COUNT ON EVERY PAGE ----------
+document.addEventListener("DOMContentLoaded", updateCartCount);
