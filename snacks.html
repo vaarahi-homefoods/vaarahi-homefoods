@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Andhra Snacks | Vaarahi HomeFoods</title>
+
   <link rel="stylesheet" href="styles.css">
-  <script src="cart.js"></script>
+
+  <!-- IMPORTANT: defer -->
+  <script src="cart.js" defer></script>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="header-inner">
 
@@ -22,29 +27,23 @@
       <p class="tagline">Traditional Homemade Foods</p>
     </div>
 
-    <!-- RIGHT ACTIONS -->
+    <!-- ACTIONS -->
     <div class="header-actions">
-
-      <!-- CONTACT US -->
-      <a 
-        href="https://wa.me/919494359748" 
-        target="_blank"
-        class="contact-btn">
+      <a href="https://wa.me/919494359748" target="_blank" class="contact-btn">
         💬 Contact Us
       </a>
 
-      <!-- CART -->
       <a href="cart.html" class="cart-top">
         🛒 Cart (<span id="cartCount">0</span>)
       </a>
-
     </div>
 
   </div>
 </header>
 
+<!-- ================= PRODUCTS ================= -->
 <section class="categories">
-<div class="product-grid">
+  <div class="product-grid">
 
 <!-- 1 -->
 <div class="product-card">
@@ -55,7 +54,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Chakkilalu (Saddapindi)','s1')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Chakkilalu (Saddapindi)','s1')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 2 -->
@@ -67,7 +68,9 @@
     <option value="500g|420">500g – ₹420</option>
     <option value="1kg|850">1kg – ₹850</option>
   </select>
-  <button onclick="addToCart('Chakkilalu (Biyyam Pindi)','s2')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Chakkilalu (Biyyam Pindi)','s2')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 3 -->
@@ -79,7 +82,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Murukulu (Ragi Pindi)','s3')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Murukulu (Ragi Pindi)','s3')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 4 -->
@@ -91,7 +96,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Ribbon Pakodi','s4')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Ribbon Pakodi','s4')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 5 -->
@@ -103,7 +110,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Boondi Mixture','s5')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Boondi Mixture','s5')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 6 -->
@@ -115,7 +124,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Kaara Poosa','s6')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Kaara Poosa','s6')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 7 -->
@@ -127,7 +138,9 @@
     <option value="500g|575">500g – ₹575</option>
     <option value="1kg|1150">1kg – ₹1150</option>
   </select>
-  <button onclick="addToCart('Kaaram Palli','s7')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Kaaram Palli','s7')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 8 -->
@@ -139,7 +152,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Nippatlu (Saddapindi)','s8')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Nippatlu (Saddapindi)','s8')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 9 -->
@@ -151,7 +166,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Nippatlu (Biyyam Pindi)','s9')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Nippatlu (Biyyam Pindi)','s9')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 10 -->
@@ -163,7 +180,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Nippatlu (Saggu Biyyam)','s10')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Nippatlu (Saggu Biyyam)','s10')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 11 -->
@@ -175,7 +194,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Minapa Janthikalu','s11')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Minapa Janthikalu','s11')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 12 -->
@@ -187,7 +208,9 @@
     <option value="500g|450">500g – ₹450</option>
     <option value="1kg|900">1kg – ₹900</option>
   </select>
-  <button onclick="addToCart('Korrala Janthikalu','s12')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Korrala Janthikalu','s12')">
+    Add to Cart
+  </button>
 </div>
 
 <!-- 13 -->
@@ -199,10 +222,12 @@
     <option value="500g|700">500g – ₹700</option>
     <option value="1kg|1350">1kg – ₹1350</option>
   </select>
-  <button onclick="addToCart('Kaaram Anapakaya','s13')">Add to Cart</button>
+  <button class="add-btn" onclick="addToCart('Kaaram Anapakaya','s13')">
+    Add to Cart
+  </button>
 </div>
 
-</div>
+  </div>
 </section>
 
 </body>
