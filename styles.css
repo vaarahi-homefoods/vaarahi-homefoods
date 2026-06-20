@@ -407,3 +407,85 @@ body {
   }
 }
 
+/* ======================
+   SECTION TITLES (Veg / Non-Veg)
+====================== */
+.section-heading {
+  max-width: 1100px;
+  margin: 50px auto 10px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.section-heading:first-of-type {
+  margin-top: 30px;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.section-badge.veg {
+  background: #3f8a3f;
+}
+
+.section-badge.nonveg {
+  background: #7a2d2d;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(0,0,0,0.12), transparent);
+}
+
+/* veg / non-veg indicator dot on cards */
+.diet-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #3f8a3f;
+  border-radius: 2px;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.diet-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3f8a3f;
+  transform: translate(-50%, -50%);
+}
+
+.diet-dot.nonveg {
+  border-color: #a13a3a;
+}
+
+.diet-dot.nonveg::after {
+  background: #a13a3a;
+}
+
+.product-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

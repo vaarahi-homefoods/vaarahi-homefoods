@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pickles | Vaarahi HomeFoods</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- IMPORTANT: defer -->
+  <script src="cart.js" defer></script>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header-inner">
+
+    <!-- LOGO = HOME -->
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.png" alt="Vaarahi HomeFoods Logo" class="logo">
+    </a>
+
+    <!-- BRAND -->
+    <div class="brand-text">
+      <h1>Vaarahi HomeFoods</h1>
+      <p class="tagline">Traditional Homemade Foods</p>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="header-actions">
+      <a href="https://wa.me/919494359748" target="_blank" class="contact-btn">
+        💬 Contact Us
+      </a>
+
+      <a href="cart.html" class="cart-top">
+        🛒 Cart (<span id="cartCount">0</span>)
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- ================= VEG PICKLES ================= -->
+<div class="section-heading">
+  <span class="section-badge veg">🟢 Veg Pickles</span>
+  <span class="section-line"></span>
+</div>
+
+<section class="categories">
+  <div class="product-grid">
+
+<!-- V1 -->
+<div class="product-card">
+  <img src="images/pickles/mango.svg" alt="Mango Pickle">
+  <h3><span class="diet-dot"></span>Mango</h3>
+  <select id="vp1">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Mango Pickle','vp1')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- V2 -->
+<div class="product-card">
+  <img src="images/pickles/gongura.svg" alt="Gongura Pickle">
+  <h3><span class="diet-dot"></span>Gongura</h3>
+  <select id="vp2">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Gongura Pickle','vp2')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- V3 -->
+<div class="product-card">
+  <img src="images/pickles/tomato.svg" alt="Tomato Pickle">
+  <h3><span class="diet-dot"></span>Tomato</h3>
+  <select id="vp3">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Tomato Pickle','vp3')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- V4 -->
+<div class="product-card">
+  <img src="images/pickles/red-chilli.svg" alt="Red Chilli Pickle">
+  <h3><span class="diet-dot"></span>Red Chilli</h3>
+  <select id="vp4">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Red Chilli Pickle','vp4')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- V5 -->
+<div class="product-card">
+  <img src="images/pickles/ginger.svg" alt="Ginger Pickle">
+  <h3><span class="diet-dot"></span>Ginger</h3>
+  <select id="vp5">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Ginger Pickle','vp5')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- V6 -->
+<div class="product-card">
+  <img src="images/pickles/usiri-amla.svg" alt="Usiri Amla Pickle">
+  <h3><span class="diet-dot"></span>Usiri – Amla</h3>
+  <select id="vp6">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Usiri - Amla Pickle','vp6')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- V7 -->
+<div class="product-card">
+  <img src="images/pickles/garlic.svg" alt="Vellulli Garlic Pickle">
+  <h3><span class="diet-dot"></span>Vellulli – Garlic</h3>
+  <select id="vp7">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Vellulli - Garlic Pickle','vp7')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- V8 -->
+<div class="product-card">
+  <img src="images/pickles/lemon.svg" alt="Lemon Pickle">
+  <h3><span class="diet-dot"></span>Lemon</h3>
+  <select id="vp8">
+    <option value="500g|400">500g – ₹400</option>
+    <option value="1kg|700">1kg – ₹700</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Lemon Pickle','vp8')">
+    Add to Cart
+  </button>
+</div>
+
+  </div>
+</section>
+
+<!-- ================= NON-VEG PICKLES ================= -->
+<div class="section-heading">
+  <span class="section-badge nonveg">🔴 Non-Veg Pickles</span>
+  <span class="section-line"></span>
+</div>
+
+<section class="categories">
+  <div class="product-grid">
+
+<!-- N1 -->
+<div class="product-card">
+  <img src="images/pickles/chicken-bone.svg" alt="Chicken with Bone Pickle">
+  <h3><span class="diet-dot nonveg"></span>Chicken with Bone</h3>
+  <select id="np1">
+    <option value="500g|700">500g – ₹700</option>
+    <option value="1kg|1300">1kg – ₹1300</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Chicken with Bone Pickle','np1')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- N2 -->
+<div class="product-card">
+  <img src="images/pickles/chicken-boneless.svg" alt="Chicken Boneless Pickle">
+  <h3><span class="diet-dot nonveg"></span>Chicken (B.less)</h3>
+  <select id="np2">
+    <option value="500g|800">500g – ₹800</option>
+    <option value="1kg|1500">1kg – ₹1500</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Chicken Boneless Pickle','np2')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- N3 -->
+<div class="product-card">
+  <img src="images/pickles/gongura-chicken-boneless.svg" alt="Gongura Chicken Boneless Pickle">
+  <h3><span class="diet-dot nonveg"></span>Gongura Chicken (B.less)</h3>
+  <select id="np3">
+    <option value="500g|800">500g – ₹800</option>
+    <option value="1kg|1500">1kg – ₹1500</option>
+  </select>
+  <button class="add-btn" onclick="addToCart('Gongura Chicken Boneless Pickle','np3')">
+    Add to Cart
+  </button>
+</div>
+
+  </div>
+</section>
+
+</body>
+</html>
